@@ -1,5 +1,8 @@
 package com.example.springpractice.controller;
 
+import com.example.springpractice.dto.UserDTO;
+import com.example.springpractice.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -8,13 +11,16 @@ import org.springframework.web.bind.annotation.*;
 
 public class UserController {
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/getUser")
     public String getUser(){
         return "Kaveesha Hettige";
     }
     @PostMapping("/saveUser")
-    public String saveUser(){
-        return "user saved!";
+    public UserDTO saveUser(@RequestBody UserDTO userDTO){
+        return userService.saveUser(userDTO);
     }
 
     @DeleteMapping("/removeUser")
