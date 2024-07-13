@@ -26,8 +26,8 @@ public class UserController {
     }
 
     @DeleteMapping("/removeUser")
-    public String removeUser(){
-        return "user removed!";
+    public boolean removeUser(@RequestBody UserDTO userDTO){
+        return userService.deleteUser(userDTO);
     }
 
     @PutMapping("/updateUser")
