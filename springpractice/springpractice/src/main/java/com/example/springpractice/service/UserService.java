@@ -36,4 +36,14 @@ public class UserService {
         return true;
     }
 
+    public UserDTO getUserById(String id){
+        User user=userRepo.getUserById(id);
+        return modelMapper.map(user,UserDTO.class);
+    }
+
+    public UserDTO getUserByUserIdAndAddress(String id,String adress){
+        User user=userRepo.getUserByUserIdAndAddress(id, adress);
+        return modelMapper.map(user,UserDTO.class);
+    }
+
 }
